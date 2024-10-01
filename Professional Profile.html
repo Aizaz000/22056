@@ -92,6 +92,13 @@
                 padding: 8px;
             }
         }
+        .icon 
+        {
+            width: 25px;      
+            height: 25px;     
+            display: inline-block; /* Makes the icon inline */
+            vertical-align: middle; /* Aligns with text */
+        }
     </style>
 </head>
 <body>
@@ -107,19 +114,12 @@
         <a href="#social">Social</a>
         <a href="#contact">Contact</a>
     </nav>
-    <!-- Language selection -->
-    <div class="container language-selector">
-        <p>Select Language: 
-            <a href="?lang=en">English</a>
-            <a href="?lang=ar">العربية</a>
-            <a href="?lang=ur">اردو</a>
-            <a href="?lang=fr">Français</a>
-        </p>
-    </div>
     <!-- Profile content -->
     <div class="container">
         <!-- Image -->
         <img src="C Chevrolet Corvette 1956.jpeg" alt="Profile Photo">
+        <!-- Translation Button-->
+        <button id="languageToggle" onclick="toggleLanguage()"> Toggle </button>
         <!-- About section -->
         <section id="about">
             <h2>Professional Profile</h2>
@@ -190,26 +190,43 @@
         <!-- Video content -->
         <section class="video">
             <h2>Video Introduction</h2>
-            <video controls>
-                <source src="video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <iframe width="100%" src="https://www.youtube.com/watch?v=jaVcDaozGgc&pp=ygUMdHJhbnNmb3JtZXJz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </section>
         <!-- Social Media -->
         <section id="social">
             <h2>Social Media</h2>
             <p>Links to my social media profiles:</p>
             <ul>
+                <img class="icon" src="github.png" alt="Description of icon">
                 <a href="https://github.com/Aizaz000">GitHub</a>
                 <br>
+                <img class="icon" src="openai.png" alt="Description of icon">
                 <a href="https://chatgpt.com/">My Best Friend</a>
             </ul>
-        </section>
-        <!-- Contact Information -->
-        <section id="contact">
-            <h2>Contact Information</h2>
-            <p>email@domain.com</p>
-        </section>
+        </section>        
     </div>
+    <!-- Footer with Contact Information -->
+    <footer style="background-color: #333; color: white; text-align: center; padding: 10px;">
+        <p>Contact Me: email@domain.com</p>
+        <p>Muhammad Aizaz Amin</p>
+    </footer>
+    <!-- JS for translation-->
+    <script>
+        let isUrdu = false;
+    
+        function toggleLanguage() {
+            const aboutText = document.querySelector('#about p');
+            const toggleButton = document.getElementById('languageToggle');
+    
+            if (isUrdu) {
+                aboutText.textContent = "Hello! I’m a beginner in web development. This is my professional profile where I showcase my education, skills, projects, and more!";
+                toggleButton.textContent = "Switch to Urdu";
+            } else {
+                aboutText.textContent = "ہیلو! میں ویب ڈویلپمنٹ کا ایک ابتدائی طالب علم ہوں۔ یہ میرا پیشہ ورانہ پروفائل ہے، جہاں میں اپنی تعلیم، مہارتیں، منصوبے، اور دیگر معلومات پیش کرتا ہوں";
+                toggleButton.textContent = "Switch to English";
+            }
+            isUrdu = !isUrdu; // Toggle the language state
+        }
+    </script>    
 </body>
 </html>
